@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 9001
 
 spring:
   application:
@@ -11,3 +11,18 @@ spring:
         git:
           uri: https://github.com/devkhchua/config.service
           clone-on-start: true
+eureka:
+  instance:
+    preferIpAddress: true
+    hostname: eureka-0
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
