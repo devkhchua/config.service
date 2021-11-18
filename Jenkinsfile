@@ -57,8 +57,8 @@ pipeline {
             steps{
                 sshagent(credentials : ['KUBE_MACHINE']) {
                     sh 'ssh -v Jordan@192.168.0.100'
-                    sh 'ssh Jordan@192.168.0.100 kubectl delete service config-service'
                     sh 'ssh Jordan@192.168.0.100 kubectl apply -f C:/Coding/projects/learning-java/k8s/config-service.yml'
+                    sh 'ssh Jordan@192.168.0.100 kubectl delete pods -l app=config-service-app'
                     sh 'ssh Jordan@192.168.0.100 kubectl get all'
                 }
             }
